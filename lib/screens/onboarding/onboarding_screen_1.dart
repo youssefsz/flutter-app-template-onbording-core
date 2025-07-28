@@ -34,26 +34,26 @@ class OnboardingScreen1 extends StatelessWidget {
                 ),
               ),
               
-              const SizedBox(height: 48),
+              const SizedBox(height: 32),
               
               // Title
               Text(
-                'Welcome to Your App',
+                'Welcome',
                 style: theme.textTheme.headlineMedium?.copyWith(
-                  fontWeight: FontWeight.bold,
+                  fontWeight: FontWeight.w600,
                   color: theme.colorScheme.onBackground,
                 ),
                 textAlign: TextAlign.center,
               ),
               
-              const SizedBox(height: 16),
+              const SizedBox(height: 12),
               
               // Description
               Text(
-                'Discover amazing features and possibilities that will transform your experience. Get ready to explore a world of innovation.',
+                'Get started with your new app experience',
                 style: theme.textTheme.bodyLarge?.copyWith(
-                  color: theme.colorScheme.onBackground.withOpacity(0.8),
-                  height: 1.5,
+                  color: theme.colorScheme.onBackground.withOpacity(0.7),
+                  height: 1.4,
                 ),
                 textAlign: TextAlign.center,
               ),
@@ -66,7 +66,6 @@ class OnboardingScreen1 extends StatelessWidget {
                 children: [
                   TextButton(
                     onPressed: () {
-                      // Skip onboarding
                       context.read<OnboardingProvider>().completeOnboarding();
                     },
                     child: Text(

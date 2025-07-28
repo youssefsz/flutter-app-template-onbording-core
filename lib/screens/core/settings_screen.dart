@@ -17,7 +17,7 @@ class SettingsScreen extends StatelessWidget {
         title: const Text('Settings'),
       ),
       body: SafeArea(
-        child: Padding(
+        child: SingleChildScrollView(
           padding: const EdgeInsets.all(16.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -29,11 +29,11 @@ class SettingsScreen extends StatelessWidget {
                   child: Row(
                     children: [
                       CircleAvatar(
-                        radius: 30,
+                        radius: 24,
                         backgroundColor: AppColors.primary.withOpacity(0.1),
                         child: Icon(
                           Icons.person,
-                          size: 32,
+                          size: 24,
                           color: AppColors.primary,
                         ),
                       ),
@@ -43,14 +43,14 @@ class SettingsScreen extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              'John Doe',
-                              style: theme.textTheme.titleLarge?.copyWith(
-                                fontWeight: FontWeight.bold,
+                              'User Name',
+                              style: theme.textTheme.titleMedium?.copyWith(
+                                fontWeight: FontWeight.w600,
                               ),
                             ),
                             const SizedBox(height: 4),
                             Text(
-                              'john.doe@example.com',
+                              'user@example.com',
                               style: theme.textTheme.bodyMedium?.copyWith(
                                 color: theme.colorScheme.onBackground.withOpacity(0.7),
                               ),
@@ -71,18 +71,17 @@ class SettingsScreen extends StatelessWidget {
               
               const SizedBox(height: 24),
               
-              // Settings sections
+              // App settings
               Text(
-                'Preferences',
+                'App Settings',
                 style: theme.textTheme.titleMedium?.copyWith(
-                  fontWeight: FontWeight.bold,
+                  fontWeight: FontWeight.w600,
                   color: theme.colorScheme.onBackground,
                 ),
               ),
               
               const SizedBox(height: 16),
               
-              // Theme settings
               Card(
                 child: Column(
                   children: [
@@ -115,23 +114,13 @@ class SettingsScreen extends StatelessWidget {
                     ListTile(
                       leading: const Icon(Icons.notifications),
                       title: const Text('Notifications'),
-                      subtitle: const Text('Manage notification preferences'),
+                      subtitle: const Text('Manage notifications'),
                       trailing: Switch(
                         value: true,
                         onChanged: (value) {
                           // Notification toggle action
                         },
                       ),
-                    ),
-                    const Divider(height: 1),
-                    ListTile(
-                      leading: const Icon(Icons.language),
-                      title: const Text('Language'),
-                      subtitle: const Text('English'),
-                      trailing: const Icon(Icons.chevron_right),
-                      onTap: () {
-                        // Language selection action
-                      },
                     ),
                   ],
                 ),
@@ -140,9 +129,9 @@ class SettingsScreen extends StatelessWidget {
               const SizedBox(height: 24),
               
               Text(
-                'App Settings',
+                'Support',
                 style: theme.textTheme.titleMedium?.copyWith(
-                  fontWeight: FontWeight.bold,
+                  fontWeight: FontWeight.w600,
                   color: theme.colorScheme.onBackground,
                 ),
               ),
@@ -153,19 +142,9 @@ class SettingsScreen extends StatelessWidget {
                 child: Column(
                   children: [
                     ListTile(
-                      leading: const Icon(Icons.info),
-                      title: const Text('About'),
-                      subtitle: const Text('App version and information'),
-                      trailing: const Icon(Icons.chevron_right),
-                      onTap: () {
-                        // About action
-                      },
-                    ),
-                    const Divider(height: 1),
-                    ListTile(
                       leading: const Icon(Icons.help),
-                      title: const Text('Help & Support'),
-                      subtitle: const Text('Get help and contact support'),
+                      title: const Text('Help'),
+                      subtitle: const Text('Get help and support'),
                       trailing: const Icon(Icons.chevron_right),
                       onTap: () {
                         // Help action
@@ -173,22 +152,12 @@ class SettingsScreen extends StatelessWidget {
                     ),
                     const Divider(height: 1),
                     ListTile(
-                      leading: const Icon(Icons.privacy_tip),
-                      title: const Text('Privacy Policy'),
-                      subtitle: const Text('Read our privacy policy'),
+                      leading: const Icon(Icons.info),
+                      title: const Text('About'),
+                      subtitle: const Text('App information'),
                       trailing: const Icon(Icons.chevron_right),
                       onTap: () {
-                        // Privacy policy action
-                      },
-                    ),
-                    const Divider(height: 1),
-                    ListTile(
-                      leading: const Icon(Icons.description),
-                      title: const Text('Terms of Service'),
-                      subtitle: const Text('Read our terms of service'),
-                      trailing: const Icon(Icons.chevron_right),
-                      onTap: () {
-                        // Terms action
+                        // About action
                       },
                     ),
                   ],
@@ -204,7 +173,7 @@ class SettingsScreen extends StatelessWidget {
                     ListTile(
                       leading: const Icon(Icons.refresh),
                       title: const Text('Reset Onboarding'),
-                      subtitle: const Text('Show onboarding screens again'),
+                      subtitle: const Text('Show onboarding again'),
                       trailing: const Icon(Icons.chevron_right),
                       onTap: () {
                         showDialog(
@@ -212,7 +181,7 @@ class SettingsScreen extends StatelessWidget {
                           builder: (context) => AlertDialog(
                             title: const Text('Reset Onboarding'),
                             content: const Text(
-                              'This will show the onboarding screens again on the next app launch. Are you sure?',
+                              'Show onboarding screens again?',
                             ),
                             actions: [
                               TextButton(
@@ -235,7 +204,7 @@ class SettingsScreen extends StatelessWidget {
                 ),
               ),
               
-              const Spacer(),
+              const SizedBox(height: 32),
               
               // Logout button
               SizedBox(
@@ -252,6 +221,8 @@ class SettingsScreen extends StatelessWidget {
                   child: const Text('Logout'),
                 ),
               ),
+              
+              const SizedBox(height: 16),
             ],
           ),
         ),

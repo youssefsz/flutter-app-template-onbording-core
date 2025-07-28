@@ -34,26 +34,26 @@ class OnboardingScreen3 extends StatelessWidget {
                 ),
               ),
               
-              const SizedBox(height: 48),
+              const SizedBox(height: 32),
               
               // Title
               Text(
-                'Ready to Start?',
+                'Ready',
                 style: theme.textTheme.headlineMedium?.copyWith(
-                  fontWeight: FontWeight.bold,
+                  fontWeight: FontWeight.w600,
                   color: theme.colorScheme.onBackground,
                 ),
                 textAlign: TextAlign.center,
               ),
               
-              const SizedBox(height: 16),
+              const SizedBox(height: 12),
               
               // Description
               Text(
-                'You\'re all set! Begin your journey and explore everything our app has to offer. Your adventure starts now.',
+                'You\'re all set to start using the app',
                 style: theme.textTheme.bodyLarge?.copyWith(
-                  color: theme.colorScheme.onBackground.withOpacity(0.8),
-                  height: 1.5,
+                  color: theme.colorScheme.onBackground.withOpacity(0.7),
+                  height: 1.4,
                 ),
                 textAlign: TextAlign.center,
               ),
@@ -78,7 +78,6 @@ class OnboardingScreen3 extends StatelessWidget {
                   
                   ElevatedButton(
                     onPressed: () {
-                      // Complete onboarding and navigate to main app
                       context.read<OnboardingProvider>().completeOnboarding();
                     },
                     child: const Text('Get Started'),

@@ -34,26 +34,26 @@ class OnboardingScreen2 extends StatelessWidget {
                 ),
               ),
               
-              const SizedBox(height: 48),
+              const SizedBox(height: 32),
               
               // Title
               Text(
-                'Track Your Progress',
+                'Customize',
                 style: theme.textTheme.headlineMedium?.copyWith(
-                  fontWeight: FontWeight.bold,
+                  fontWeight: FontWeight.w600,
                   color: theme.colorScheme.onBackground,
                 ),
                 textAlign: TextAlign.center,
               ),
               
-              const SizedBox(height: 16),
+              const SizedBox(height: 12),
               
               // Description
               Text(
-                'Monitor your achievements and stay motivated with our comprehensive tracking system. Set goals and watch yourself grow.',
+                'Personalize your experience with our settings',
                 style: theme.textTheme.bodyLarge?.copyWith(
-                  color: theme.colorScheme.onBackground.withOpacity(0.8),
-                  height: 1.5,
+                  color: theme.colorScheme.onBackground.withOpacity(0.7),
+                  height: 1.4,
                 ),
                 textAlign: TextAlign.center,
               ),

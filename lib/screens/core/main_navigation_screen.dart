@@ -10,9 +10,7 @@ class MainNavigationScreen extends StatefulWidget {
   State<MainNavigationScreen> createState() => _MainNavigationScreenState();
 }
 
-class _MainNavigationScreenState extends State<MainNavigationScreen>
-    with TickerProviderStateMixin {
-  late TabController _tabController;
+class _MainNavigationScreenState extends State<MainNavigationScreen> {
   int _currentIndex = 0;
 
   final List<Widget> _screens = [
@@ -34,25 +32,13 @@ class _MainNavigationScreenState extends State<MainNavigationScreen>
   ];
 
   @override
-  void initState() {
-    super.initState();
-    _tabController = TabController(length: _screens.length, vsync: this);
-  }
-
-  @override
-  void dispose() {
-    _tabController.dispose();
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     
     return Scaffold(
       backgroundColor: theme.colorScheme.background,
-      body: TabBarView(
-        controller: _tabController,
+      body: IndexedStack(
+        index: _currentIndex,
         children: _screens,
       ),
       bottomNavigationBar: Container(
@@ -91,7 +77,6 @@ class _MainNavigationScreenState extends State<MainNavigationScreen>
         setState(() {
           _currentIndex = index;
         });
-        _tabController.animateTo(index);
       },
       child: AnimatedContainer(
         duration: const Duration(milliseconds: 200),
@@ -107,9 +92,17 @@ class _MainNavigationScreenState extends State<MainNavigationScreen>
           children: [
             AnimatedSwitcher(
               duration: const Duration(milliseconds: 200),
-              child: isSelected 
-                  ? _navigationItems[index].activeIcon ?? _navigationItems[index].icon!
-                  : _navigationItems[index].icon!,
+              child: IconTheme(
+                data: IconThemeData(
+                  color: isSelected 
+                      ? AppColors.primary
+                      : theme.colorScheme.onSurface.withOpacity(0.6),
+                  size: 24,
+                ),
+                child: isSelected 
+                    ? _navigationItems[index].activeIcon ?? _navigationItems[index].icon!
+                    : _navigationItems[index].icon!,
+              ),
             ),
             const SizedBox(height: 4),
             AnimatedDefaultTextStyle(

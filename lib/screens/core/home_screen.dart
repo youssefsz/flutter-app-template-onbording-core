@@ -37,9 +37,9 @@ class HomeScreen extends StatelessWidget {
             children: [
               // Welcome section
               Text(
-                'Welcome back!',
+                'Welcome',
                 style: theme.textTheme.headlineMedium?.copyWith(
-                  fontWeight: FontWeight.bold,
+                  fontWeight: FontWeight.w600,
                   color: theme.colorScheme.onBackground,
                 ),
               ),
@@ -47,7 +47,7 @@ class HomeScreen extends StatelessWidget {
               const SizedBox(height: 8),
               
               Text(
-                'Here\'s what\'s happening today',
+                'Your app template is ready',
                 style: theme.textTheme.bodyLarge?.copyWith(
                   color: theme.colorScheme.onBackground.withOpacity(0.7),
                 ),
@@ -55,40 +55,40 @@ class HomeScreen extends StatelessWidget {
               
               const SizedBox(height: 24),
               
-              // Stats cards
+              // Template cards
               Expanded(
                 child: GridView.count(
                   crossAxisCount: 2,
                   crossAxisSpacing: 16,
                   mainAxisSpacing: 16,
                   children: [
-                    _buildStatCard(
+                    _buildTemplateCard(
                       context,
-                      'Total Items',
-                      '1,234',
-                      Icons.inventory,
-                      AppColors.primaryGradient,
+                      'Features',
+                      'Explore app features',
+                      Icons.featured_play_list,
+                      AppColors.primary,
                     ),
-                    _buildStatCard(
+                    _buildTemplateCard(
                       context,
-                      'Active Tasks',
-                      '56',
-                      Icons.task_alt,
-                      AppColors.secondaryGradient,
+                      'Settings',
+                      'Customize your app',
+                      Icons.settings,
+                      AppColors.secondary,
                     ),
-                    _buildStatCard(
+                    _buildTemplateCard(
                       context,
-                      'Completed',
-                      '789',
-                      Icons.check_circle,
-                      AppColors.accentGradient,
+                      'Profile',
+                      'Manage your account',
+                      Icons.person,
+                      AppColors.accent,
                     ),
-                    _buildStatCard(
+                    _buildTemplateCard(
                       context,
-                      'In Progress',
-                      '23',
-                      Icons.pending,
-                      AppColors.primaryGradient,
+                      'Help',
+                      'Get support',
+                      Icons.help,
+                      AppColors.primary,
                     ),
                   ],
                 ),
@@ -96,11 +96,11 @@ class HomeScreen extends StatelessWidget {
               
               const SizedBox(height: 24),
               
-              // Recent activity
+              // Quick actions
               Text(
-                'Recent Activity',
+                'Quick Actions',
                 style: theme.textTheme.titleLarge?.copyWith(
-                  fontWeight: FontWeight.bold,
+                  fontWeight: FontWeight.w600,
                   color: theme.colorScheme.onBackground,
                 ),
               ),
@@ -110,34 +110,38 @@ class HomeScreen extends StatelessWidget {
               Expanded(
                 flex: 2,
                 child: ListView.builder(
-                  itemCount: 5,
+                  itemCount: 3,
                   itemBuilder: (context, index) {
+                    final actions = [
+                      {'title': 'View Settings', 'icon': Icons.settings, 'color': AppColors.secondary},
+                      {'title': 'Edit Profile', 'icon': Icons.person, 'color': AppColors.accent},
+                      {'title': 'Get Help', 'icon': Icons.help, 'color': AppColors.primary},
+                    ];
+                    
                     return Card(
                       margin: const EdgeInsets.only(bottom: 8),
                       child: ListTile(
                         leading: CircleAvatar(
-                          backgroundColor: AppColors.primary.withOpacity(0.1),
+                          backgroundColor: (actions[index]['color'] as Color).withOpacity(0.1),
                           child: Icon(
-                            Icons.notifications,
-                            color: AppColors.primary,
+                            actions[index]['icon'] as IconData,
+                            color: actions[index]['color'] as Color,
                           ),
                         ),
                         title: Text(
-                          'Activity ${index + 1}',
+                          actions[index]['title'] as String,
                           style: theme.textTheme.titleMedium,
                         ),
                         subtitle: Text(
-                          'This is a sample activity description for item ${index + 1}',
+                          'Tap to access this feature',
                           style: theme.textTheme.bodyMedium?.copyWith(
                             color: theme.colorScheme.onBackground.withOpacity(0.7),
                           ),
                         ),
-                        trailing: Text(
-                          '${index + 1}h ago',
-                          style: theme.textTheme.bodySmall?.copyWith(
-                            color: theme.colorScheme.onBackground.withOpacity(0.5),
-                          ),
-                        ),
+                        trailing: const Icon(Icons.chevron_right),
+                        onTap: () {
+                          // Action tap handler
+                        },
                       ),
                     );
                   },
@@ -150,20 +154,20 @@ class HomeScreen extends StatelessWidget {
     );
   }
   
-  Widget _buildStatCard(
+  Widget _buildTemplateCard(
     BuildContext context,
     String title,
-    String value,
+    String subtitle,
     IconData icon,
-    LinearGradient gradient,
+    Color color,
   ) {
     final theme = Theme.of(context);
     
     return Card(
       child: Container(
         decoration: BoxDecoration(
-          gradient: gradient,
-          borderRadius: BorderRadius.circular(16),
+          color: color.withOpacity(0.1),
+          borderRadius: BorderRadius.circular(12),
         ),
         padding: const EdgeInsets.all(16),
         child: Column(
@@ -172,21 +176,22 @@ class HomeScreen extends StatelessWidget {
             Icon(
               icon,
               size: 32,
-              color: Colors.white,
+              color: color,
             ),
             const SizedBox(height: 8),
             Text(
-              value,
-              style: theme.textTheme.headlineSmall?.copyWith(
-                fontWeight: FontWeight.bold,
-                color: Colors.white,
+              title,
+              style: theme.textTheme.titleMedium?.copyWith(
+                fontWeight: FontWeight.w600,
+                color: theme.colorScheme.onBackground,
               ),
+              textAlign: TextAlign.center,
             ),
             const SizedBox(height: 4),
             Text(
-              title,
-              style: theme.textTheme.bodyMedium?.copyWith(
-                color: Colors.white.withOpacity(0.9),
+              subtitle,
+              style: theme.textTheme.bodySmall?.copyWith(
+                color: theme.colorScheme.onBackground.withOpacity(0.7),
               ),
               textAlign: TextAlign.center,
             ),

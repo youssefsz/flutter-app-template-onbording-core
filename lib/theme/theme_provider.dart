@@ -5,9 +5,11 @@ import 'app_theme.dart';
 class ThemeProvider extends ChangeNotifier {
   static const String _themeKey = 'theme_mode';
   
-  ThemeMode _themeMode = ThemeMode.system;
+  ThemeMode _themeMode;
+  bool _isInitialized = true;
   
   ThemeMode get themeMode => _themeMode;
+  bool get isInitialized => _isInitialized;
   
   bool get isDarkMode {
     if (_themeMode == ThemeMode.system) {
@@ -16,16 +18,7 @@ class ThemeProvider extends ChangeNotifier {
     return _themeMode == ThemeMode.dark;
   }
   
-  ThemeProvider() {
-    _loadThemeMode();
-  }
-  
-  Future<void> _loadThemeMode() async {
-    final prefs = await SharedPreferences.getInstance();
-    final themeIndex = prefs.getInt(_themeKey) ?? 0;
-    _themeMode = ThemeMode.values[themeIndex];
-    notifyListeners();
-  }
+  ThemeProvider(ThemeMode initialThemeMode) : _themeMode = initialThemeMode;
   
   Future<void> setThemeMode(ThemeMode themeMode) async {
     if (_themeMode == themeMode) return;
@@ -33,8 +26,12 @@ class ThemeProvider extends ChangeNotifier {
     _themeMode = themeMode;
     notifyListeners();
     
-    final prefs = await SharedPreferences.getInstance();
-    await prefs.setInt(_themeKey, themeMode.index);
+    try {
+      final prefs = await SharedPreferences.getInstance();
+      await prefs.setInt(_themeKey, themeMode.index);
+    } catch (e) {
+      // Handle error silently
+    }
   }
   
   Future<void> toggleTheme() async {
