@@ -6,7 +6,7 @@ class ThemeProvider extends ChangeNotifier {
   static const String _themeKey = 'theme_mode';
   
   ThemeMode _themeMode;
-  bool _isInitialized = true;
+  final bool _isInitialized = true;
   
   ThemeMode get themeMode => _themeMode;
   bool get isInitialized => _isInitialized;

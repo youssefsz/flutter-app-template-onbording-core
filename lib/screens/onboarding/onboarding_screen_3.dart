@@ -11,7 +11,7 @@ class OnboardingScreen3 extends StatelessWidget {
     final theme = Theme.of(context);
     
     return Scaffold(
-      backgroundColor: theme.colorScheme.background,
+      backgroundColor: theme.colorScheme.surface,
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(24.0),
@@ -41,7 +41,7 @@ class OnboardingScreen3 extends StatelessWidget {
                 'Ready',
                 style: theme.textTheme.headlineMedium?.copyWith(
                   fontWeight: FontWeight.w600,
-                  color: theme.colorScheme.onBackground,
+                  color: theme.colorScheme.onSurface,
                 ),
                 textAlign: TextAlign.center,
               ),
@@ -52,7 +52,7 @@ class OnboardingScreen3 extends StatelessWidget {
               Text(
                 'You\'re all set to start using the app',
                 style: theme.textTheme.bodyLarge?.copyWith(
-                  color: theme.colorScheme.onBackground.withOpacity(0.7),
+                  color: theme.colorScheme.onSurface.withOpacity(0.7),
                   height: 1.4,
                 ),
                 textAlign: TextAlign.center,
@@ -71,7 +71,7 @@ class OnboardingScreen3 extends StatelessWidget {
                     child: Text(
                       'Back',
                       style: theme.textTheme.labelLarge?.copyWith(
-                        color: theme.colorScheme.onBackground.withOpacity(0.6),
+                        color: theme.colorScheme.onSurface.withOpacity(0.6),
                       ),
                     ),
                   ),

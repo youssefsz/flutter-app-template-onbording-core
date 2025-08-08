@@ -27,7 +27,7 @@ class _OnboardingFlowScreenState extends State<OnboardingFlowScreen> {
     final theme = Theme.of(context);
     
     return Scaffold(
-      backgroundColor: theme.colorScheme.background,
+      backgroundColor: theme.colorScheme.surface,
       body: SafeArea(
         child: Column(
           children: [

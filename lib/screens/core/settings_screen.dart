@@ -12,7 +12,7 @@ class SettingsScreen extends StatelessWidget {
     final theme = Theme.of(context);
     
     return Scaffold(
-      backgroundColor: theme.colorScheme.background,
+      backgroundColor: theme.colorScheme.surface,
       appBar: AppBar(
         title: const Text('Settings'),
       ),
@@ -52,7 +52,7 @@ class SettingsScreen extends StatelessWidget {
                             Text(
                               'user@example.com',
                               style: theme.textTheme.bodyMedium?.copyWith(
-                                color: theme.colorScheme.onBackground.withOpacity(0.7),
+                                color: theme.colorScheme.onSurface.withOpacity(0.7),
                               ),
                             ),
                           ],
@@ -76,7 +76,7 @@ class SettingsScreen extends StatelessWidget {
                 'App Settings',
                 style: theme.textTheme.titleMedium?.copyWith(
                   fontWeight: FontWeight.w600,
-                  color: theme.colorScheme.onBackground,
+                  color: theme.colorScheme.onSurface,
                 ),
               ),
               
@@ -132,7 +132,7 @@ class SettingsScreen extends StatelessWidget {
                 'Support',
                 style: theme.textTheme.titleMedium?.copyWith(
                   fontWeight: FontWeight.w600,
-                  color: theme.colorScheme.onBackground,
+                  color: theme.colorScheme.onSurface,
                 ),
               ),
               

@@ -36,7 +36,7 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
     final theme = Theme.of(context);
     
     return Scaffold(
-      backgroundColor: theme.colorScheme.background,
+      backgroundColor: theme.colorScheme.surface,
       body: IndexedStack(
         index: _currentIndex,
         children: _screens,
@@ -100,8 +100,8 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
                   size: 24,
                 ),
                 child: isSelected 
-                    ? _navigationItems[index].activeIcon ?? _navigationItems[index].icon!
-                    : _navigationItems[index].icon!,
+                    ? _navigationItems[index].activeIcon ?? _navigationItems[index].icon
+                    : _navigationItems[index].icon,
               ),
             ),
             const SizedBox(height: 4),
